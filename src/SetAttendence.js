@@ -11,7 +11,7 @@ import {Button,TextField } from '@mui/material'
 import AWS from "aws-sdk";
 
 const SetAttendence = () => {
-    
+
   let [rows, setrows] = useState([]);
 
   const docClient = new AWS.DynamoDB.DocumentClient();
@@ -28,11 +28,23 @@ const SetAttendence = () => {
       }
     });
   };
-  console.log(rows);
+
+let [data,setdata]=useState([{RollNo:'',Email:'',DM:'',CNS:'',Cloud:''}]);
+
 
   useEffect(() => {
+
     fetchstudents("students");
   }, [rows]);
+
+  let handleChange=(e,idx)=>{
+console.log(e.target.value)
+let cloned=[...data]
+cloned[idx][e.target.name]=e.target.value;
+setdata(cloned)
+
+  }
+  console.log(data)
 
   return (
     <>
@@ -50,37 +62,67 @@ const SetAttendence = () => {
           </TableHead>
           {rows.length ? (
             <TableBody>
-              {rows.map((row,idx) => (
+              {rows.map((row, idx) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-
-                  <TableCell component="th" scope="row" >
-                    
+                  <TableCell component="th" scope="row">
                     {row.RollNo}
+                  </TableCell>
+
+                  <TableCell align="right"> {row.Email} </TableCell>
+
+                  <TableCell align="right">
+              
+                    <TextField
+                      name="DM"
+                      onChange={(e) => {
+                        handleChange(e, idx);
+                      }}
+                    />
+                  </TableCell>
+
+                  <TableCell align="right">
+     
+                    <TextField
+                    name='CNS'
+                      onChange={(e) => {
+                        handleChange(e, idx);
+                      }}
+                    />
+                  </TableCell>
+
+                  <TableCell>
+               
+                    <TextField        
+                      name='Cloud'
+                      onChange={(e) => {
+                      
+                        handleChange(e, idx);
+                      
+                      }}/>
 
                   </TableCell>
 
-                  <TableCell align="right">{row.Email}</TableCell>
+<TableCell>
+ <Button variant="contained" background="secondary"  onClick={()=>{
 
-                  <TableCell align="right"><TextField/> </TableCell>
-                  <TableCell align="right"><TextField/></TableCell>
-                  <TableCell align="right"><TextField/></TableCell>
+setdata([{...data,RollNo:row.ROllNo,Email:row.Email}])
+    
+ }}>
+        Upload Attendence
+      </Button>
+</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           ) : (
             <CircularProgress />
           )}
-
         </Table>
       </TableContainer>
-    <Button variant='contained'  background='secondary' 
-    
-    >
-Upload Attendence
-    </Button>
+     
     </>
   );
 };
