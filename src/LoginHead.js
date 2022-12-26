@@ -13,7 +13,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import {Toolbar} from '@material-ui/core'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,Link} from 'react-router-dom'
 import {AppBar,IconButton,Typography,Avatar,Tooltip} from '@mui/material'
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -47,14 +47,18 @@ let navigate=useNavigate();
     >
       <List>
         {['CollegeFees','Attendence','RecentSemesterMarks','Recent Supply Marks'].map((text, index) => (
+          
           <ListItem key={text} disablePadding>
+          <Link to ={text} style={{textDecoration:'none' ,color:'black'}}>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
+            </Link>
           </ListItem>
+
         ))}
       </List>
       <Divider />
@@ -109,7 +113,7 @@ let navigate=useNavigate();
          </Typography>
          <Tooltip title="Open settings">
            <IconButton sx={{ p: 0 }}>
-             <Avatar alt="Remy Sharp" src={imageUrl} />
+             <Avatar alt="R" src={imageUrl} />
            </IconButton>
          </Tooltip>
        </Toolbar>

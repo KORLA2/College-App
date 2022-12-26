@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-collegemanagement-dev-104149-authRole",
+      "UnauthRoleArn": "arn:aws:iam::388238880747:role/amplify-collegemanagement-dev-104149-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::388238880747:role/amplify-collegemanagement-dev-104149-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-collegemanagement-dev-104149-deployment",
+      "UnauthRoleName": "amplify-collegemanagement-dev-104149-unauthRole",
+      "StackName": "amplify-collegemanagement-dev-104149",
+      "StackId": "arn:aws:cloudformation:ap-south-1:388238880747:stack/amplify-collegemanagement-dev-104149/cec6c230-84db-11ed-8608-021c032dc248",
+      "AmplifyAppId": "d31nfhly28boxr"
+    },
+    "categories": {
+      "auth": {
+        "collegemanagement8757b24d": {}
+      },
+      "api": {
+        "collegemanagement": {}
+      }
+    }
+  }
+}
