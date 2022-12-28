@@ -109,7 +109,7 @@ let navigate=useNavigate();
            sx={{ mr: 2 }}
          ></IconButton>
          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-           {name}
+           {name} As Student
          </Typography>
          <Tooltip title="Open settings">
            <IconButton sx={{ p: 0 }}>

@@ -37,7 +37,7 @@ useEffect(()=>{
 
 fetchstudents('students');
 
-},[rows])
+},[rows.length])
 
   
   return (

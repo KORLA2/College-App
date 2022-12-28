@@ -60,6 +60,7 @@ let params={
 
   TableName:table,
   Item:data,
+  
 }
 
  

@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import * as AWS from "aws-sdk";
 
 import { useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom'
@@ -48,11 +49,11 @@ function a11yProps(index) {
 }
 
 
-const Auth = () => {
+const Auth = ({setEmail}) => {
 let navigate=useNavigate()
 
   const [value, setValue] = React.useState(0);
-
+let [Error,setError]=useState('');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -75,7 +76,30 @@ let [user,setuser]=useState(localStorage.getItem('user'));
 
 let handleShowpassword = () => setshowpass(!showpass);
 
-let [SignUp,setSignUp]=useState(1);
+
+
+ const docClient = new AWS.DynamoDB.DocumentClient();
+
+ const fetchstudents = (tableName,email) => {
+   var params = {
+     TableName: tableName,
+   };
+
+   docClient.scan(params, function(err, data) {
+     if (!err) {
+       let rows = data.Items.map((e) => e);
+   for(let i=0;i<rows.length;++i)
+   if(rows[i].Email===email)  {  console.log(email);setEmail(email);navigate('/user')
+  return ;   
+  }
+  console.log('not found')
+  setError('User Not Yet Registered');
+      }
+   });
+
+
+ };
+
   return (
     <div>
       <MainHead />
@@ -118,6 +142,16 @@ let [SignUp,setSignUp]=useState(1);
               >
                 Student SignIn
               </Typography>
+              <Typography
+                variant="h5"
+                style={{
+                  textAlign: "center",
+                  margin: "1rem auto 1rem auto",
+                  color: "red",
+                }}
+              >
+               {Error}
+              </Typography>
 
               <form onSubmit={() => {}}>
                 <GoogleLogin
@@ -144,7 +178,7 @@ let [SignUp,setSignUp]=useState(1);
                         JSON.stringify({ token, result })
                       );
 
-                      navigate("/user");
+                      fetchstudents("students", result.email);
                     } catch (err) {
                       console.log(err);
                     }
