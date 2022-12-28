@@ -27,15 +27,16 @@ const Attendence = ({Email}) => {
 
     docClient.scan(params, function(err, data) {
       if (!err) {
-        rows = data.Items.map((e) =>{ if()})
-        
-        setrows(rows);
+      for(let i=0;i<data.Items.length;++i)
+      if(Email===data.Items[i].Email){setrows([data.Items[i]])
+      return ;
+      }
       }
     });
   };
 
 useEffect(() => {
-  fetchstudents("students")
+  fetchstudents("Attendance")
 
   
   
