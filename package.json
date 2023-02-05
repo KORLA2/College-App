@@ -32,6 +32,7 @@
     "react-scripts": "5.0.1",
     "react-virtualized": "^9.22.3",
     "redux": "^4.2.0",
+    "serverless": "^3.27.0",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
