@@ -1,64 +1,61 @@
 {
-  "auth": {
-    "collegemanagement8757b24d": {
-      "service": "Cognito",
+  "api": {
+    "collegeapp": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "collegeapp9dd3e50c"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authcollegeapp9dd3e50c"
+            }
+          }
+        }
+      },
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "collegeapp9dd3e50c": {
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
         "mfaConfiguration": "OFF",
         "mfaTypes": [
           "SMS"
         ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
-      }
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
+      },
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "collegemanagement8757b24d",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
-        }
-      ]
+      "service": "Cognito"
     }
   },
-  "api": {
-    "collegemanagement": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
+  "storage": {
+    "s3college": {
       "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            }
-          },
-          "additionalAuthenticationProviders": []
-        }
-      }
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

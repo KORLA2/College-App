@@ -1,25 +1,20 @@
 import React ,{useState}from 'react'
-import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom'
-import Auth from './Auth'
-import LoginHead from "./LoginHead";
-import  TotalStudents from './TotalStudents'
-import RegisterStudents from './RegisterStudents'
-import SetAttendence from './SetAttendence'
-import Admin from './Admin'
-import Attendence from './Attendence'
+import { Home, Student, Admin, Register, s } from "./Pages/exports";
+import { Addstudent, AllStudents} from "./Pages/Admin_tasks/exports";
+import {ViewProfile} from './Pages/Student_tasks/exports'
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 const App = () => {
-let[Email,setEmail]=useState('');
-console.log(Email)
+
   return (
     <Router>
       <Routes>
-        <Route path="/user" element={<LoginHead />} />
-        <Route path="/" element={<Auth setEmail={setEmail} />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/user/Attendence" element={<Attendence Email={Email}/>} />
-        <Route path="/admin/RegisterStudents" element={<RegisterStudents />} />
-        <Route path="/admin/TotalStudents" element={<TotalStudents />} />
-        <Route path="/admin/SetAttendence" element={<SetAttendence />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/student" element={<Student />} />
+        <Route path="/admin" element={<Admin />}></Route>
+        <Route path="/admin/register" element={<Register />} />
+        <Route path="/admin/Add Student" element={<Addstudent />} />
+        <Route path="/admin/All Students" element={<AllStudents />} />
+        <Route path="/student/View Profile" element={<ViewProfile />} />
       </Routes>
     </Router>
   );

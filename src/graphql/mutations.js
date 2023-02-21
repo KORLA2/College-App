@@ -1,105 +1,75 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createRegister = /* GraphQL */ `
-  mutation CreateRegister(
-    $input: CreateRegisterInput!
-    $condition: ModelRegisterConditionInput
+export const createStudent = /* GraphQL */ `
+  mutation CreateStudent(
+    $input: CreateStudentInput!
+    $condition: ModelStudentConditionInput
   ) {
-    createRegister(input: $input, condition: $condition) {
+    createStudent(input: $input, condition: $condition) {
+      id
       RollNo
-      name
-      Email
-      Branch
       Year
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateRegister = /* GraphQL */ `
-  mutation UpdateRegister(
-    $input: UpdateRegisterInput!
-    $condition: ModelRegisterConditionInput
-  ) {
-    updateRegister(input: $input, condition: $condition) {
-      RollNo
-      name
-      Email
+      Name
       Branch
-      Year
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteRegister = /* GraphQL */ `
-  mutation DeleteRegister(
-    $input: DeleteRegisterInput!
-    $condition: ModelRegisterConditionInput
-  ) {
-    deleteRegister(input: $input, condition: $condition) {
-      RollNo
-      name
+      Address
       Email
-      Branch
+      Image {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateStudent = /* GraphQL */ `
+  mutation UpdateStudent(
+    $input: UpdateStudentInput!
+    $condition: ModelStudentConditionInput
+  ) {
+    updateStudent(input: $input, condition: $condition) {
+      id
+      RollNo
       Year
-      id
+      Name
+      Branch
+      Address
+      Email
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const createAttendence = /* GraphQL */ `
-  mutation CreateAttendence(
-    $input: CreateAttendenceInput!
-    $condition: ModelAttendenceConditionInput
+export const deleteStudent = /* GraphQL */ `
+  mutation DeleteStudent(
+    $input: DeleteStudentInput!
+    $condition: ModelStudentConditionInput
   ) {
-    createAttendence(input: $input, condition: $condition) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
+    deleteStudent(input: $input, condition: $condition) {
       id
+      RollNo
+      Year
+      Name
+      Branch
+      Address
+      Email
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
-    }
-  }
-`;
-export const updateAttendence = /* GraphQL */ `
-  mutation UpdateAttendence(
-    $input: UpdateAttendenceInput!
-    $condition: ModelAttendenceConditionInput
-  ) {
-    updateAttendence(input: $input, condition: $condition) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAttendence = /* GraphQL */ `
-  mutation DeleteAttendence(
-    $input: DeleteAttendenceInput!
-    $condition: ModelAttendenceConditionInput
-  ) {
-    deleteAttendence(input: $input, condition: $condition) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
-      id
-      createdAt
-      updatedAt
+      owner
     }
   }
 `;

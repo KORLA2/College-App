@@ -1,71 +1,50 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getRegister = /* GraphQL */ `
-  query GetRegister($id: ID!) {
-    getRegister(id: $id) {
+export const getStudent = /* GraphQL */ `
+  query GetStudent($id: ID!) {
+    getStudent(id: $id) {
+      id
       RollNo
-      name
-      Email
-      Branch
       Year
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listRegisters = /* GraphQL */ `
-  query ListRegisters(
-    $filter: ModelRegisterFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listRegisters(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        RollNo
-        name
-        Email
-        Branch 
-        Year
-        id
-        createdAt
-        updatedAt
+      Name
+      Branch
+      Address
+      Email
+      Image {
+        bucket
+        region
+        key
       }
-      nextToken
-    }
-  }
-`;
-export const getAttendence = /* GraphQL */ `
-  query GetAttendence($id: ID!) {
-    getAttendence(id: $id) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
-      id
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const listAttendences = /* GraphQL */ `
-  query ListAttendences(
-    $filter: ModelAttendenceFilterInput
+export const listStudents = /* GraphQL */ `
+  query ListStudents(
+    $filter: ModelStudentFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listAttendences(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listStudents(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        RollNo
-        CNS
-        DM
-        Cloud
-        POE
         id
+        RollNo
+        Year
+        Name
+        Branch
+        Address
+        Email
+        Image {
+          bucket
+          region
+          key
+        }
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }

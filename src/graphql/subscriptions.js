@@ -1,93 +1,75 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateRegister = /* GraphQL */ `
-  subscription OnCreateRegister($filter: ModelSubscriptionRegisterFilterInput) {
-    onCreateRegister(filter: $filter) {
-      RollNo
-      name
-      Email
-      Branch
-      Year
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateRegister = /* GraphQL */ `
-  subscription OnUpdateRegister($filter: ModelSubscriptionRegisterFilterInput) {
-    onUpdateRegister(filter: $filter) {
-      RollNo
-      name
-      Email
-      Branch
-      Year
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteRegister = /* GraphQL */ `
-  subscription OnDeleteRegister($filter: ModelSubscriptionRegisterFilterInput) {
-    onDeleteRegister(filter: $filter) {
-      RollNo
-      name
-      Email
-      Branch
-      Year
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateAttendence = /* GraphQL */ `
-  subscription OnCreateAttendence(
-    $filter: ModelSubscriptionAttendenceFilterInput
+export const onCreateStudent = /* GraphQL */ `
+  subscription OnCreateStudent(
+    $filter: ModelSubscriptionStudentFilterInput
+    $owner: String
   ) {
-    onCreateAttendence(filter: $filter) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
+    onCreateStudent(filter: $filter, owner: $owner) {
       id
+      RollNo
+      Year
+      Name
+      Branch
+      Address
+      Email
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const onUpdateAttendence = /* GraphQL */ `
-  subscription OnUpdateAttendence(
-    $filter: ModelSubscriptionAttendenceFilterInput
+export const onUpdateStudent = /* GraphQL */ `
+  subscription OnUpdateStudent(
+    $filter: ModelSubscriptionStudentFilterInput
+    $owner: String
   ) {
-    onUpdateAttendence(filter: $filter) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
+    onUpdateStudent(filter: $filter, owner: $owner) {
       id
+      RollNo
+      Year
+      Name
+      Branch
+      Address
+      Email
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
-export const onDeleteAttendence = /* GraphQL */ `
-  subscription OnDeleteAttendence(
-    $filter: ModelSubscriptionAttendenceFilterInput
+export const onDeleteStudent = /* GraphQL */ `
+  subscription OnDeleteStudent(
+    $filter: ModelSubscriptionStudentFilterInput
+    $owner: String
   ) {
-    onDeleteAttendence(filter: $filter) {
-      RollNo
-      CNS
-      DM
-      Cloud
-      POE
+    onDeleteStudent(filter: $filter, owner: $owner) {
       id
+      RollNo
+      Year
+      Name
+      Branch
+      Address
+      Email
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
+      owner
     }
   }
 `;

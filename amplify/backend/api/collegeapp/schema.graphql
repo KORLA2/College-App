@@ -1,0 +1,19 @@
+type S3Object{
+bucket:String!
+region:String!
+key:String!
+
+}
+
+type Student @model @auth(rules :[{allow:owner}]){
+
+  id:ID!
+  RollNo:Int!
+  Year:Int!
+ Name:String!
+ Branch:String!
+Address:String!
+Email:String!
+Image:S3Object
+   
+}

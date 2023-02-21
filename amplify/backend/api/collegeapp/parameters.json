@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "collegeapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcollegeapp9dd3e50c",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

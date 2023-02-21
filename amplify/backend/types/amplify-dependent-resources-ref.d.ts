@@ -1,23 +1,25 @@
 export type AmplifyDependentResourcesAttributes = {
-    "auth": {
-        "collegemanagement8757b24d": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
-            "UserPoolId": "string",
-            "UserPoolArn": "string",
-            "UserPoolName": "string",
-            "AppClientIDWeb": "string",
-            "AppClientID": "string"
-        },
-        "userPoolGroups": {
-            "collegeGroupRole": "string"
-        }
-    },
-    "api": {
-        "collegemanagement": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        }
+  "api": {
+    "collegeapp": {
+      "GraphQLAPIEndpointOutput": "string",
+      "GraphQLAPIIdOutput": "string"
     }
+  },
+  "auth": {
+    "collegeapp9dd3e50c": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
+  },
+  "storage": {
+    "s3college": {
+      "BucketName": "string",
+      "Region": "string"
+    }
+  }
 }

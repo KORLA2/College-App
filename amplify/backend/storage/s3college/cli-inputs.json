@@ -1,0 +1,13 @@
+{
+  "resourceName": "s3college",
+  "policyUUID": "94c573b0",
+  "bucketName": "collegeappb9dc7ccd0b864c8bb54d7882fb4ec125",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "groupAccess": {}
+}
