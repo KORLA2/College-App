@@ -20,8 +20,8 @@ catch(err){console.log(err)}
 }
 
 
-  function RegisterStudent(e) {
-   
+
+function RegisterStudent(e) {
 
 Storage.put(image.name,image,{
   
@@ -32,24 +32,29 @@ contentType:'image/png'
   let file={
 
     name:image.name,
+
     file:{
       bucket:aws_mobile.aws_user_files_s3_bucket,
       region:aws_mobile.aws_user_files_s3_bucket_region,
       key:'/public'+image.name
     }
+  
   }
-DynamoDB(file);
+  student.Image=file.file
+DynamoDB();
 console.log('successfully ')
 }).catch(e=>console.log(e))
 
   }
-  console.log(image)
+  console.log(student)
 
   return (
     <Box sx={{}}>
       <input
         type="file"
         onChange={(e) => {
+       
+  
           setimage(e.target.files[0]);
         }}
       />
@@ -62,7 +67,7 @@ console.log('successfully ')
       <TextField
         variant="outlined"
         value={student.Email}
-        onChange={(e) => setstudent({ ...student, Email: String([e.target.value]) })}
+        onChange={(e) => setstudent({ ...student, Email: e.target.value})}
         label="Email"
       />
       <TextField

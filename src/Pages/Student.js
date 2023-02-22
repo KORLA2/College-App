@@ -20,16 +20,15 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { TextField } from "@mui/material";
-import {getStudent, listStudents} from '../graphql/queries'
-import { graphqlOperation ,API} from "aws-amplify";
+import { graphqlOperation ,API,Storage} from "aws-amplify";
+import * as queries from '../graphql/queries';
 import { CastConnectedSharp } from "@material-ui/icons";
-const Student = () => {
+const Student = ({student,setstudent,setimage}) => {
 const [state, setState] = useState({
   left: false,
 });
 let [login, setlogin] = useState(1);
-let [RollNo,setRollNo]=useState('');
-let [student, setstudent] = useState("");
+let [password,setpassword]=useState('');
 let [Id, setId] = useState("");
 
 const toggleDrawer = (anchor, open) => (event) => {
@@ -46,11 +45,19 @@ const toggleDrawer = (anchor, open) => (event) => {
 let checkLogin=async ()=>{
 try{
 
-  let res = await API.graphql(graphqlOperation(listStudents))
 
-  setlogin(0)
-    console.log(res)
-    setstudent(res.data.listStudents.items)
+const student = await API.graphql({
+  query: queries.getStudent,
+  variables: { id:password},
+});
+
+setlogin(0);
+setstudent(student)
+console.log(student)
+
+const imageurl=await Storage.get(student.data.getStudent.Image.key.substring(7),{expires:60})
+console.log(student.data.getStudent.Image.key.substring(7));
+setimage(imageurl)
 }
 catch(e){
   console.log(e)
@@ -121,10 +128,18 @@ const list = (anchor) => (
             </IconButton>
           )}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {login ? "Welcome to Student page" : `Welcome ${student[0].Name} `}
+            {login
+              ? "Welcome to Student page"
+              : `Welcome ${student.data.getStudent.Name} `}
           </Typography>
           {!login && (
-            <Button color="secondary" variant="contained" onClick={()=>{setlogin(1)}}>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={() => {
+                setlogin(1);
+              }}
+            >
               Logout
             </Button>
           )}
@@ -139,8 +154,20 @@ const list = (anchor) => (
           <Avatar>
             <LockIcon />
           </Avatar>
-          <TextField variant="outlined" label="RollNo" sx={{ m: 3 }} />
-          <TextField variant="outlined" label="uniqueId" sx={{ m: 3 }} />
+          <TextField
+            variant="outlined"
+            label="RollNo"
+            sx={{ m: 3 }}
+           
+          />
+          <TextField
+            variant="outlined"
+            label="uniqueId"
+            sx={{ m: 3 }}
+            onChange={(e) => {
+              setpassword(e.target.value);
+            }}
+          />
           <Button color="secondary" variant="contained" onClick={checkLogin}>
             Login
           </Button>
