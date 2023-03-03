@@ -2,7 +2,7 @@ import React from 'react'
 
 import{Paper,Avatar, Typography} from '@mui/material'
 const ViewProfile = ({student,image}) => {
-
+console.log(student)
 
   return (
     <Paper
@@ -16,14 +16,10 @@ const ViewProfile = ({student,image}) => {
       />
       <Typography variant="h4">Name: {student?.data.getStudent.Name}</Typography>
 
-      <Typography variant="h5">ROllNo: {student?.data.getStudent.RollNo}</Typography>
+      <Typography variant="h5">RollNo: {student?.data.getStudent.RollNo}</Typography>
       <Typography variant="h5">Branch : {student?.data.getStudent.Branch}</Typography>
-      <Typography variant="h6">Year: {student?.data.getStudent.Year} </Typography>
-      <Typography variant="h6">Email:{student?.data.getStudent.Email}</Typography>
-      <Typography variant="h6">
-      Address:
-        {student?.data.getStudent.Address}
-      </Typography>
+     
+    
     </Paper>
   ); 
 }

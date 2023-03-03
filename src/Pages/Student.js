@@ -20,16 +20,18 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { TextField } from "@mui/material";
+import {getStudent,getBranch} from '../graphql/queries'
 import { graphqlOperation ,API,Storage} from "aws-amplify";
 import * as queries from '../graphql/queries';
 import { CastConnectedSharp } from "@material-ui/icons";
-const Student = ({student,setstudent,setimage}) => {
+const Student = ({student,setstudent,setimage,setRollNo1}) => {
 const [state, setState] = useState({
   left: false,
 });
 let [login, setlogin] = useState(1);
-let [password,setpassword]=useState('');
+
 let [Id, setId] = useState("");
+let [RollNo, setRollNo] = useState("");
 
 const toggleDrawer = (anchor, open) => (event) => {
   if (
@@ -45,14 +47,13 @@ const toggleDrawer = (anchor, open) => (event) => {
 let checkLogin=async ()=>{
 try{
 
+let student=await API.graphql(graphqlOperation(getStudent,{RollNo:RollNo}))
 
-const student = await API.graphql({
-  query: queries.getStudent,
-  variables: { id:password},
-});
 
 setlogin(0);
+
 setstudent(student)
+setRollNo1(RollNo)
 console.log(student)
 
 const imageurl=await Storage.get(student.data.getStudent.Image.key.substring(7),{expires:60})
@@ -75,7 +76,7 @@ const list = (anchor) => (
     onKeyDown={toggleDrawer(anchor, false)}
   >
     <List>
-      {["View Profile", "View Attendence", "View Marks", "All Students"].map(
+      {["View Profile", "View Attendance", "View Marks", "All Students"].map(
         (text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -158,16 +159,10 @@ const list = (anchor) => (
             variant="outlined"
             label="RollNo"
             sx={{ m: 3 }}
+            onChange={(e)=>{setRollNo(e.target.value)}}
            
           />
-          <TextField
-            variant="outlined"
-            label="uniqueId"
-            sx={{ m: 3 }}
-            onChange={(e) => {
-              setpassword(e.target.value);
-            }}
-          />
+
           <Button color="secondary" variant="contained" onClick={checkLogin}>
             Login
           </Button>

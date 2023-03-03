@@ -199,6 +199,11 @@ export const getStudent = /* GraphQL */ `
         updatedAt
         username
       }
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       username
@@ -237,6 +242,11 @@ export const listStudents = /* GraphQL */ `
           createdAt
           updatedAt
           username
+        }
+        Image {
+          bucket
+          region
+          key
         }
         createdAt
         updatedAt
@@ -440,6 +450,11 @@ export const studentsByBranchIDAndYearID = /* GraphQL */ `
           createdAt
           updatedAt
           username
+        }
+        Image {
+          bucket
+          region
+          key
         }
         createdAt
         updatedAt

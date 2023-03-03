@@ -333,6 +333,11 @@ export const createStudent = /* GraphQL */ `
         updatedAt
         username
       }
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       username
@@ -380,6 +385,11 @@ export const updateStudent = /* GraphQL */ `
         updatedAt
         username
       }
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       username
@@ -426,6 +436,11 @@ export const deleteStudent = /* GraphQL */ `
         createdAt
         updatedAt
         username
+      }
+      Image {
+        bucket
+        region
+        key
       }
       createdAt
       updatedAt

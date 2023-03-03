@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import {Box,Paper,Button, TextField,MenuItem,Select,InputLabel} from '@mui/material'
 import {API,Storage,graphqlOperation} from 'aws-amplify'
 import {createStudent} from '../../graphql/mutations'
-import {listYears,listBranches} from '../../graphql/queries'
+import {listYears,listSubjects,listBranches,getBranch,listStudents} from '../../graphql/queries'
 import aws_mobile  from '../../aws-exports'
 import {v4 as uuid} from 'uuid'
 function Addstudent({ setislogged }) {
-  let [student,setstudent]=useState({RollNo:'',Name:'',BranchID:'',YearID:''})
+  let [student,setstudent]=useState({Name:'',RollNo:'',BranchID:'',YearID:''})
  let [image,setimage]=useState([]);
 let [year,setYear]=useState('')
+let [Years,setYears]=useState([])
 let [branch, setBranch] = useState("");
+let [Branches, setBranches] = useState([]);
+
 async function DynamoDB(file){
 try{
 
@@ -21,33 +24,42 @@ catch(err){console.log(err)}
 
 }
 
+async function fetchYear(){
+ 
+  try{
+    let x= await API.graphql(graphqlOperation(listYears));
+
+setYears(x.data.listYears.items)
+  }
+  catch(er){
+
+console.log(er)
+
+  }
+
+}
+
+async function fetchBranch(){
+ 
+  try{
+    let x= await API.graphql(graphqlOperation(listBranches));
+    setBranches(x.data.listBranches.items)
+
+
+  }
+  catch(er){
+
+console.log(er)
+
+  }
+
+}
 useEffect(()=>{
 
 
- async function fetchYear(){
-  try{
-    
-let x= await API.graphql(graphqlOperation(listYears));
+fetchYear();
+fetchBranch();
 
-console.log(x)
-  }
-  catch(er){
-console.log(er)
-  }
-
-}
-fetchYear()
-async function fetchBranch(){
-  
-try{
-let y=await API.graphql(graphqlOperation(listBranches))
-console.log(y)
-}
-catch(err){
-console.log(err)
-}
-}
-fetchBranch()
 
 },[])
 
@@ -79,9 +91,9 @@ console.log('successfully ')
   console.log(student)
 
   return (
-    <Box>
+    <Box sx={{height:"100vh",width:"100vw",display:'grid',placeItems:"center",}}>
 
-<Paper elevation ={3}>
+<Paper elevation ={3} sx={{p:4,display:'flex',flexDirection:'column'}} >
       <input
         type="file"
         onChange={(e) => {
@@ -89,26 +101,31 @@ console.log('successfully ')
   
           setimage(e.target.files[0]);
         }}
+        sx={{m:4}}
+
       />
       <TextField
         variant="outlined"
         label="RollNO"
         value={student.RollNo}
-        onChange={(e) => setstudent({ ...student, RollNo: [e.target.value] })}
+        sx={{m:4}}
+        onChange={(e) => setstudent({ ...student, RollNo:(e.target.value) })}
       />
       <InputLabel id="demo-simple-select-label">Branch</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
+
           value={branch}
           label="Branch"
           onChange={(e)=>{
             setBranch(e.target.value)
+            setstudent({ ...student, BranchID:(e.target.value)})
+
           }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+       {Branches?.map(e=><MenuItem value={e.Name}>{e.Name}</MenuItem>)
+       }
         </Select>
    
     
@@ -120,21 +137,28 @@ console.log('successfully ')
           label="Year"
           onChange={(e)=>{
             setYear(e.target.value)
+            setstudent({ ...student, YearID:(e.target.value)})
+
+
           }}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+        >  {Years?.map(e=><MenuItem value={e.YearNo}>{e.YearNo}</MenuItem>)
+      }
+        
         </Select>
    
       <TextField
         variant="outlined"
         value={student.Name}
-        onChange={(e) => setstudent({ ...student, Name: String([e.target.value]) })}
+        sx={{m:4}}
+
+        onChange={(e) => setstudent({ ...student, Name:(e.target.value) })}
         label="Name"
       />
 
-      <Button onClick={RegisterStudent}>Add Student</Button>
+      <Button
+      variant="contained"
+      sx={{m:4}}
+      onClick={RegisterStudent}>Add Student</Button>
    </Paper>
     </Box>
 
