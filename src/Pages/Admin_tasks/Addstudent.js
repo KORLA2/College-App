@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {Box,Button, TextField} from '@mui/material'
+import {Box,Paper,Button, TextField,MenuItem,Select,InputLabel} from '@mui/material'
 import {API,Storage,graphqlOperation} from 'aws-amplify'
 import {createStudent} from '../../graphql/mutations'
+import {listYears,listBranches} from '../../graphql/queries'
 import aws_mobile  from '../../aws-exports'
 import {v4 as uuid} from 'uuid'
 function Addstudent({ setislogged }) {
-  let [student,setstudent]=useState({id:uuid(),RollNo:0,Name:'',Email:'',Branch:'',Year:0,Address:''})
+  let [student,setstudent]=useState({RollNo:'',Name:'',BranchID:'',YearID:''})
  let [image,setimage]=useState([]);
-
+let [year,setYear]=useState('')
+let [branch, setBranch] = useState("");
 async function DynamoDB(file){
 try{
 
@@ -19,12 +21,40 @@ catch(err){console.log(err)}
 
 }
 
+useEffect(()=>{
 
+
+ async function fetchYear(){
+  try{
+    
+let x= await API.graphql(graphqlOperation(listYears));
+
+console.log(x)
+  }
+  catch(er){
+console.log(er)
+  }
+
+}
+fetchYear()
+async function fetchBranch(){
+  
+try{
+let y=await API.graphql(graphqlOperation(listBranches))
+console.log(y)
+}
+catch(err){
+console.log(err)
+}
+}
+fetchBranch()
+
+},[])
 
 function RegisterStudent(e) {
 
 Storage.put(image.name,image,{
-  
+
 contentType:'image/png'
 
 }).then(res=>{
@@ -49,7 +79,9 @@ console.log('successfully ')
   console.log(student)
 
   return (
-    <Box sx={{}}>
+    <Box>
+
+<Paper elevation ={3}>
       <input
         type="file"
         onChange={(e) => {
@@ -62,32 +94,39 @@ console.log('successfully ')
         variant="outlined"
         label="RollNO"
         value={student.RollNo}
-        onChange={(e) => setstudent({ ...student, RollNo: Number([e.target.value] )})}
+        onChange={(e) => setstudent({ ...student, RollNo: [e.target.value] })}
       />
-      <TextField
-        variant="outlined"
-        value={student.Email}
-        onChange={(e) => setstudent({ ...student, Email: e.target.value})}
-        label="Email"
-      />
-      <TextField
-        variant="outlined"
-        onChange={(e) => setstudent({ ...student, Branch: String([e.target.value])})}
-        value={student.Branch}
-        label="Branch"
-      />
-      <TextField
-        variant="outlined"
-        onChange={(e) => setstudent({ ...student, Year:Number([e.target.value]) })}
-        value={student.Year}
-        label="Year"
-      />
-      <TextField
-        variant="outlined"
-        value={student.Address}
-        onChange={(e) => setstudent({ ...student, Address: String([e.target.value] )})}
-        label="Address"
-      />
+      <InputLabel id="demo-simple-select-label">Branch</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={branch}
+          label="Branch"
+          onChange={(e)=>{
+            setBranch(e.target.value)
+          }}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+   
+    
+      <InputLabel id="demo-simple-select-label">Year</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={year}
+          label="Year"
+          onChange={(e)=>{
+            setYear(e.target.value)
+          }}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+   
       <TextField
         variant="outlined"
         value={student.Name}
@@ -96,7 +135,9 @@ console.log('successfully ')
       />
 
       <Button onClick={RegisterStudent}>Add Student</Button>
+   </Paper>
     </Box>
+
   );
 }
 

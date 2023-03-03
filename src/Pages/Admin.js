@@ -57,7 +57,9 @@ let [islogged, setislogged] = useState(0);
      >
        <List>
        
-      {["Add Student", "Set Attendence", "Set Subject", "All Students"].map((text, index) => (
+       
+      {["Add Student", "Set Attendance", "Set Subject", "All Students"].map((text, index) => (
+         
            <ListItem key={text} disablePadding>
              <ListItemButton>
                <ListItemIcon>

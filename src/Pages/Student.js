@@ -182,3 +182,8 @@ const list = (anchor) => (
 
 
 export default Student
+
+      // "id": "d721357e-09b5-4a14-ba36-02bc34945772",
+      // "Name": "CSE"
+    // "id": "df7ce089-5e19-4fb7-b056-805316884cce",
+    //   "Name": "ME"
