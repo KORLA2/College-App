@@ -1,579 +1,420 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBranch = /* GraphQL */ `
-  subscription OnCreateBranch(
-    $filter: ModelSubscriptionBranchFilterInput
-    $username: String
-  ) {
-    onCreateBranch(filter: $filter, username: $username) {
-      BranchID
-      Name
-      Years {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Students {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const onUpdateBranch = /* GraphQL */ `
-  subscription OnUpdateBranch(
-    $filter: ModelSubscriptionBranchFilterInput
-    $username: String
-  ) {
-    onUpdateBranch(filter: $filter, username: $username) {
-      BranchID
-      Name
-      Years {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Students {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const onDeleteBranch = /* GraphQL */ `
-  subscription OnDeleteBranch(
-    $filter: ModelSubscriptionBranchFilterInput
-    $username: String
-  ) {
-    onDeleteBranch(filter: $filter, username: $username) {
-      BranchID
-      Name
-      Years {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Students {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const onCreateYear = /* GraphQL */ `
-  subscription OnCreateYear(
-    $filter: ModelSubscriptionYearFilterInput
-    $username: String
-  ) {
-    onCreateYear(filter: $filter, username: $username) {
-      YearNo
-      student {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Branches {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const onUpdateYear = /* GraphQL */ `
-  subscription OnUpdateYear(
-    $filter: ModelSubscriptionYearFilterInput
-    $username: String
-  ) {
-    onUpdateYear(filter: $filter, username: $username) {
-      YearNo
-      student {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Branches {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const onDeleteYear = /* GraphQL */ `
-  subscription OnDeleteYear(
-    $filter: ModelSubscriptionYearFilterInput
-    $username: String
-  ) {
-    onDeleteYear(filter: $filter, username: $username) {
-      YearNo
-      student {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Branches {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
 export const onCreateStudent = /* GraphQL */ `
-  subscription OnCreateStudent(
-    $filter: ModelSubscriptionStudentFilterInput
-    $username: String
-  ) {
-    onCreateStudent(filter: $filter, username: $username) {
+  subscription OnCreateStudent($filter: ModelSubscriptionStudentFilterInput) {
+    onCreateStudent(filter: $filter) {
       RollNo
       Name
-      YearID
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
-      Image {
-        bucket
-        region
-        key
+      YearID
+      Year {
+        Name
+        Students {
+          nextToken
+        }
+        Branch {
+          nextToken
+        }
+        createdAt
+        updatedAt
       }
+      Image
       createdAt
       updatedAt
-      username
+      branchStudentsName
+      yearStudentsName
     }
   }
 `;
 export const onUpdateStudent = /* GraphQL */ `
-  subscription OnUpdateStudent(
-    $filter: ModelSubscriptionStudentFilterInput
-    $username: String
-  ) {
-    onUpdateStudent(filter: $filter, username: $username) {
+  subscription OnUpdateStudent($filter: ModelSubscriptionStudentFilterInput) {
+    onUpdateStudent(filter: $filter) {
       RollNo
       Name
-      YearID
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
-      Image {
-        bucket
-        region
-        key
+      YearID
+      Year {
+        Name
+        Students {
+          nextToken
+        }
+        Branch {
+          nextToken
+        }
+        createdAt
+        updatedAt
       }
+      Image
       createdAt
       updatedAt
-      username
+      branchStudentsName
+      yearStudentsName
     }
   }
 `;
 export const onDeleteStudent = /* GraphQL */ `
-  subscription OnDeleteStudent(
-    $filter: ModelSubscriptionStudentFilterInput
-    $username: String
-  ) {
-    onDeleteStudent(filter: $filter, username: $username) {
+  subscription OnDeleteStudent($filter: ModelSubscriptionStudentFilterInput) {
+    onDeleteStudent(filter: $filter) {
       RollNo
       Name
-      YearID
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
-      Image {
-        bucket
-        region
-        key
+      YearID
+      Year {
+        Name
+        Students {
+          nextToken
+        }
+        Branch {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      Image
+      createdAt
+      updatedAt
+      branchStudentsName
+      yearStudentsName
+    }
+  }
+`;
+export const onCreateBranch = /* GraphQL */ `
+  subscription OnCreateBranch($filter: ModelSubscriptionBranchFilterInput) {
+    onCreateBranch(filter: $filter) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Years {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      Subjects {
+        items {
+          Name
+          BranchID
+          YearID
+          createdAt
+          updatedAt
+          branchSubjectsName
+        }
+        nextToken
       }
       createdAt
       updatedAt
-      username
+    }
+  }
+`;
+export const onUpdateBranch = /* GraphQL */ `
+  subscription OnUpdateBranch($filter: ModelSubscriptionBranchFilterInput) {
+    onUpdateBranch(filter: $filter) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Years {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      Subjects {
+        items {
+          Name
+          BranchID
+          YearID
+          createdAt
+          updatedAt
+          branchSubjectsName
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteBranch = /* GraphQL */ `
+  subscription OnDeleteBranch($filter: ModelSubscriptionBranchFilterInput) {
+    onDeleteBranch(filter: $filter) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Years {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      Subjects {
+        items {
+          Name
+          BranchID
+          YearID
+          createdAt
+          updatedAt
+          branchSubjectsName
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateYear = /* GraphQL */ `
+  subscription OnCreateYear($filter: ModelSubscriptionYearFilterInput) {
+    onCreateYear(filter: $filter) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Branch {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateYear = /* GraphQL */ `
+  subscription OnUpdateYear($filter: ModelSubscriptionYearFilterInput) {
+    onUpdateYear(filter: $filter) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Branch {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteYear = /* GraphQL */ `
+  subscription OnDeleteYear($filter: ModelSubscriptionYearFilterInput) {
+    onDeleteYear(filter: $filter) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Branch {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
 export const onCreateSubject = /* GraphQL */ `
-  subscription OnCreateSubject(
-    $filter: ModelSubscriptionSubjectFilterInput
-    $username: String
-  ) {
-    onCreateSubject(filter: $filter, username: $username) {
-      SubjectID
-      SubjectName
-      YearID
+  subscription OnCreateSubject($filter: ModelSubscriptionSubjectFilterInput) {
+    onCreateSubject(filter: $filter) {
+      Name
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
+      YearID
       createdAt
       updatedAt
-      username
+      branchSubjectsName
     }
   }
 `;
 export const onUpdateSubject = /* GraphQL */ `
-  subscription OnUpdateSubject(
-    $filter: ModelSubscriptionSubjectFilterInput
-    $username: String
-  ) {
-    onUpdateSubject(filter: $filter, username: $username) {
-      SubjectID
-      SubjectName
-      YearID
+  subscription OnUpdateSubject($filter: ModelSubscriptionSubjectFilterInput) {
+    onUpdateSubject(filter: $filter) {
+      Name
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
+      YearID
       createdAt
       updatedAt
-      username
+      branchSubjectsName
     }
   }
 `;
 export const onDeleteSubject = /* GraphQL */ `
-  subscription OnDeleteSubject(
-    $filter: ModelSubscriptionSubjectFilterInput
-    $username: String
-  ) {
-    onDeleteSubject(filter: $filter, username: $username) {
-      SubjectID
-      SubjectName
-      YearID
+  subscription OnDeleteSubject($filter: ModelSubscriptionSubjectFilterInput) {
+    onDeleteSubject(filter: $filter) {
+      Name
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
+        Students {
           nextToken
         }
-        Students {
+        Years {
           nextToken
         }
         Subjects {
@@ -581,149 +422,125 @@ export const onDeleteSubject = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        username
       }
+      YearID
       createdAt
       updatedAt
-      username
+      branchSubjectsName
     }
   }
 `;
-export const onCreateBranchYear = /* GraphQL */ `
-  subscription OnCreateBranchYear(
-    $filter: ModelSubscriptionBranchYearFilterInput
-    $username: String
+export const onCreateYearbranch = /* GraphQL */ `
+  subscription OnCreateYearbranch(
+    $filter: ModelSubscriptionYearbranchFilterInput
   ) {
-    onCreateBranchYear(filter: $filter, username: $username) {
+    onCreateYearbranch(filter: $filter) {
       id
-      branchBranchID
-      yearYearNo
+      branchName
+      yearName
       branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       year {
-        YearNo
-        student {
+        Name
+        Students {
           nextToken
         }
-        Branches {
-          nextToken
-        }
-        Subjects {
+        Branch {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       createdAt
       updatedAt
-      username
     }
   }
 `;
-export const onUpdateBranchYear = /* GraphQL */ `
-  subscription OnUpdateBranchYear(
-    $filter: ModelSubscriptionBranchYearFilterInput
-    $username: String
+export const onUpdateYearbranch = /* GraphQL */ `
+  subscription OnUpdateYearbranch(
+    $filter: ModelSubscriptionYearbranchFilterInput
   ) {
-    onUpdateBranchYear(filter: $filter, username: $username) {
+    onUpdateYearbranch(filter: $filter) {
       id
-      branchBranchID
-      yearYearNo
+      branchName
+      yearName
       branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       year {
-        YearNo
-        student {
+        Name
+        Students {
           nextToken
         }
-        Branches {
-          nextToken
-        }
-        Subjects {
+        Branch {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       createdAt
       updatedAt
-      username
     }
   }
 `;
-export const onDeleteBranchYear = /* GraphQL */ `
-  subscription OnDeleteBranchYear(
-    $filter: ModelSubscriptionBranchYearFilterInput
-    $username: String
+export const onDeleteYearbranch = /* GraphQL */ `
+  subscription OnDeleteYearbranch(
+    $filter: ModelSubscriptionYearbranchFilterInput
   ) {
-    onDeleteBranchYear(filter: $filter, username: $username) {
+    onDeleteYearbranch(filter: $filter) {
       id
-      branchBranchID
-      yearYearNo
+      branchName
+      yearName
       branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       year {
-        YearNo
-        student {
+        Name
+        Students {
           nextToken
         }
-        Branches {
-          nextToken
-        }
-        Subjects {
+        Branch {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       createdAt
       updatedAt
-      username
     }
   }
 `;

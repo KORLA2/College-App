@@ -20,17 +20,14 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { TextField } from "@mui/material";
-import {getStudent,getBranch} from '../graphql/queries'
+import {getStudent} from '../graphql/queries'
 import { graphqlOperation ,API,Storage} from "aws-amplify";
-import * as queries from '../graphql/queries';
-import { CastConnectedSharp } from "@material-ui/icons";
 const Student = ({student,setstudent,setimage,setRollNo1}) => {
 const [state, setState] = useState({
   left: false,
 });
 let [login, setlogin] = useState(1);
 
-let [Id, setId] = useState("");
 let [RollNo, setRollNo] = useState("");
 
 const toggleDrawer = (anchor, open) => (event) => {
@@ -147,7 +144,7 @@ const list = (anchor) => (
         </Toolbar>
       </AppBar>
 
-      {login ? (
+      { login ? (
         <Paper
           elevation={3}
           sx={{ m: 3, p: 3, display: "grid", placeItems: "center" }}

@@ -1,6 +1,6 @@
 import React ,{useEffect,useState}from 'react'
 import * as AWS from 'aws-sdk'
-import{Paper,Avatar, Typography} from '@mui/material'
+import{Paper} from '@mui/material'
 
 
 
@@ -35,7 +35,7 @@ let [student,setstudent]=useState([]);
 
   {
     student?.map(e=>{
-if(e.RollNo==RollNo){
+if(e.RollNo===RollNo){
     return (
 
         <h1>e.Branch</h1>

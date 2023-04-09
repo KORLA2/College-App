@@ -1,297 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBranch = /* GraphQL */ `
-  mutation CreateBranch(
-    $input: CreateBranchInput!
-    $condition: ModelBranchConditionInput
-  ) {
-    createBranch(input: $input, condition: $condition) {
-      BranchID
-      Name
-      Years {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Students {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const updateBranch = /* GraphQL */ `
-  mutation UpdateBranch(
-    $input: UpdateBranchInput!
-    $condition: ModelBranchConditionInput
-  ) {
-    updateBranch(input: $input, condition: $condition) {
-      BranchID
-      Name
-      Years {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Students {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const deleteBranch = /* GraphQL */ `
-  mutation DeleteBranch(
-    $input: DeleteBranchInput!
-    $condition: ModelBranchConditionInput
-  ) {
-    deleteBranch(input: $input, condition: $condition) {
-      BranchID
-      Name
-      Years {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Students {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const createYear = /* GraphQL */ `
-  mutation CreateYear(
-    $input: CreateYearInput!
-    $condition: ModelYearConditionInput
-  ) {
-    createYear(input: $input, condition: $condition) {
-      YearNo
-      student {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Branches {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const updateYear = /* GraphQL */ `
-  mutation UpdateYear(
-    $input: UpdateYearInput!
-    $condition: ModelYearConditionInput
-  ) {
-    updateYear(input: $input, condition: $condition) {
-      YearNo
-      student {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Branches {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
-export const deleteYear = /* GraphQL */ `
-  mutation DeleteYear(
-    $input: DeleteYearInput!
-    $condition: ModelYearConditionInput
-  ) {
-    deleteYear(input: $input, condition: $condition) {
-      YearNo
-      student {
-        items {
-          RollNo
-          Name
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Branches {
-        items {
-          id
-          branchBranchID
-          yearYearNo
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      Subjects {
-        items {
-          SubjectID
-          SubjectName
-          YearID
-          BranchID
-          createdAt
-          updatedAt
-          username
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-      username
-    }
-  }
-`;
 export const createStudent = /* GraphQL */ `
   mutation CreateStudent(
     $input: CreateStudentInput!
@@ -300,47 +9,38 @@ export const createStudent = /* GraphQL */ `
     createStudent(input: $input, condition: $condition) {
       RollNo
       Name
-      YearID
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
-      Image {
-        bucket
-        region
-        key
+      YearID
+      Year {
+        Name
+        Students {
+          nextToken
+        }
+        Branch {
+          nextToken
+        }
+        createdAt
+        updatedAt
       }
+      Image
       createdAt
       updatedAt
-      username
+      branchStudentsName
+      yearStudentsName
     }
   }
 `;
@@ -352,47 +52,38 @@ export const updateStudent = /* GraphQL */ `
     updateStudent(input: $input, condition: $condition) {
       RollNo
       Name
-      YearID
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
-      Image {
-        bucket
-        region
-        key
+      YearID
+      Year {
+        Name
+        Students {
+          nextToken
+        }
+        Branch {
+          nextToken
+        }
+        createdAt
+        updatedAt
       }
+      Image
       createdAt
       updatedAt
-      username
+      branchStudentsName
+      yearStudentsName
     }
   }
 `;
@@ -404,47 +95,287 @@ export const deleteStudent = /* GraphQL */ `
     deleteStudent(input: $input, condition: $condition) {
       RollNo
       Name
-      YearID
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
-      Image {
-        bucket
-        region
-        key
+      YearID
+      Year {
+        Name
+        Students {
+          nextToken
+        }
+        Branch {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      Image
+      createdAt
+      updatedAt
+      branchStudentsName
+      yearStudentsName
+    }
+  }
+`;
+export const createBranch = /* GraphQL */ `
+  mutation CreateBranch(
+    $input: CreateBranchInput!
+    $condition: ModelBranchConditionInput
+  ) {
+    createBranch(input: $input, condition: $condition) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Years {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      Subjects {
+        items {
+          Name
+          BranchID
+          YearID
+          createdAt
+          updatedAt
+          branchSubjectsName
+        }
+        nextToken
       }
       createdAt
       updatedAt
-      username
+    }
+  }
+`;
+export const updateBranch = /* GraphQL */ `
+  mutation UpdateBranch(
+    $input: UpdateBranchInput!
+    $condition: ModelBranchConditionInput
+  ) {
+    updateBranch(input: $input, condition: $condition) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Years {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      Subjects {
+        items {
+          Name
+          BranchID
+          YearID
+          createdAt
+          updatedAt
+          branchSubjectsName
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteBranch = /* GraphQL */ `
+  mutation DeleteBranch(
+    $input: DeleteBranchInput!
+    $condition: ModelBranchConditionInput
+  ) {
+    deleteBranch(input: $input, condition: $condition) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Years {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      Subjects {
+        items {
+          Name
+          BranchID
+          YearID
+          createdAt
+          updatedAt
+          branchSubjectsName
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createYear = /* GraphQL */ `
+  mutation CreateYear(
+    $input: CreateYearInput!
+    $condition: ModelYearConditionInput
+  ) {
+    createYear(input: $input, condition: $condition) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Branch {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateYear = /* GraphQL */ `
+  mutation UpdateYear(
+    $input: UpdateYearInput!
+    $condition: ModelYearConditionInput
+  ) {
+    updateYear(input: $input, condition: $condition) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Branch {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteYear = /* GraphQL */ `
+  mutation DeleteYear(
+    $input: DeleteYearInput!
+    $condition: ModelYearConditionInput
+  ) {
+    deleteYear(input: $input, condition: $condition) {
+      Name
+      Students {
+        items {
+          RollNo
+          Name
+          BranchID
+          YearID
+          Image
+          createdAt
+          updatedAt
+          branchStudentsName
+          yearStudentsName
+        }
+        nextToken
+      }
+      Branch {
+        items {
+          id
+          branchName
+          yearName
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -454,44 +385,26 @@ export const createSubject = /* GraphQL */ `
     $condition: ModelSubjectConditionInput
   ) {
     createSubject(input: $input, condition: $condition) {
-      SubjectID
-      SubjectName
-      YearID
+      Name
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
+      YearID
       createdAt
       updatedAt
-      username
+      branchSubjectsName
     }
   }
 `;
@@ -501,44 +414,26 @@ export const updateSubject = /* GraphQL */ `
     $condition: ModelSubjectConditionInput
   ) {
     updateSubject(input: $input, condition: $condition) {
-      SubjectID
-      SubjectName
-      YearID
+      Name
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
+      YearID
       createdAt
       updatedAt
-      username
+      branchSubjectsName
     }
   }
 `;
@@ -548,32 +443,14 @@ export const deleteSubject = /* GraphQL */ `
     $condition: ModelSubjectConditionInput
   ) {
     deleteSubject(input: $input, condition: $condition) {
-      SubjectID
-      SubjectName
-      YearID
+      Name
       BranchID
-      Year {
-        YearNo
-        student {
-          nextToken
-        }
-        Branches {
-          nextToken
-        }
-        Subjects {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        username
-      }
       Branch {
-        BranchID
         Name
-        Years {
+        Students {
           nextToken
         }
-        Students {
+        Years {
           nextToken
         }
         Subjects {
@@ -581,149 +458,128 @@ export const deleteSubject = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        username
       }
+      YearID
       createdAt
       updatedAt
-      username
+      branchSubjectsName
     }
   }
 `;
-export const createBranchYear = /* GraphQL */ `
-  mutation CreateBranchYear(
-    $input: CreateBranchYearInput!
-    $condition: ModelBranchYearConditionInput
+export const createYearbranch = /* GraphQL */ `
+  mutation CreateYearbranch(
+    $input: CreateYearbranchInput!
+    $condition: ModelYearbranchConditionInput
   ) {
-    createBranchYear(input: $input, condition: $condition) {
+    createYearbranch(input: $input, condition: $condition) {
       id
-      branchBranchID
-      yearYearNo
+      branchName
+      yearName
       branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       year {
-        YearNo
-        student {
+        Name
+        Students {
           nextToken
         }
-        Branches {
-          nextToken
-        }
-        Subjects {
+        Branch {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       createdAt
       updatedAt
-      username
     }
   }
 `;
-export const updateBranchYear = /* GraphQL */ `
-  mutation UpdateBranchYear(
-    $input: UpdateBranchYearInput!
-    $condition: ModelBranchYearConditionInput
+export const updateYearbranch = /* GraphQL */ `
+  mutation UpdateYearbranch(
+    $input: UpdateYearbranchInput!
+    $condition: ModelYearbranchConditionInput
   ) {
-    updateBranchYear(input: $input, condition: $condition) {
+    updateYearbranch(input: $input, condition: $condition) {
       id
-      branchBranchID
-      yearYearNo
+      branchName
+      yearName
       branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       year {
-        YearNo
-        student {
+        Name
+        Students {
           nextToken
         }
-        Branches {
-          nextToken
-        }
-        Subjects {
+        Branch {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       createdAt
       updatedAt
-      username
     }
   }
 `;
-export const deleteBranchYear = /* GraphQL */ `
-  mutation DeleteBranchYear(
-    $input: DeleteBranchYearInput!
-    $condition: ModelBranchYearConditionInput
+export const deleteYearbranch = /* GraphQL */ `
+  mutation DeleteYearbranch(
+    $input: DeleteYearbranchInput!
+    $condition: ModelYearbranchConditionInput
   ) {
-    deleteBranchYear(input: $input, condition: $condition) {
+    deleteYearbranch(input: $input, condition: $condition) {
       id
-      branchBranchID
-      yearYearNo
+      branchName
+      yearName
       branch {
-        BranchID
         Name
-        Years {
-          nextToken
-        }
         Students {
           nextToken
         }
+        Years {
+          nextToken
+        }
         Subjects {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       year {
-        YearNo
-        student {
+        Name
+        Students {
           nextToken
         }
-        Branches {
-          nextToken
-        }
-        Subjects {
+        Branch {
           nextToken
         }
         createdAt
         updatedAt
-        username
       }
       createdAt
       updatedAt
-      username
     }
   }
 `;

@@ -20,7 +20,7 @@ import '@aws-amplify/ui-react/styles.css';
 import {Link} from 'react-router-dom'
 import {Amplify,Auth} from 'aws-amplify'
 import awsconfig from "../aws-exports";
-import { useNavigate } from 'react-router-dom';
+
 import { Authenticator } from "@aws-amplify/ui-react";
 
 

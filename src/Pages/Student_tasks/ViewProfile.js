@@ -17,7 +17,7 @@ console.log(student)
       <Typography variant="h4">Name: {student?.data.getStudent.Name}</Typography>
 
       <Typography variant="h5">RollNo: {student?.data.getStudent.RollNo}</Typography>
-      <Typography variant="h5">Branch : {student?.data.getStudent.Branch}</Typography>
+      <Typography variant="h5">Branch : {student?.data.getStudent.BranchID}</Typography>
      
     
     </Paper>

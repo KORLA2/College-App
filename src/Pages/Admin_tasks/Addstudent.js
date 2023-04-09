@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import {Box,Paper,Button, TextField,MenuItem,Select,InputLabel} from '@mui/material'
 import {API,Storage,graphqlOperation} from 'aws-amplify'
 import {createStudent} from '../../graphql/mutations'
-import {listYears,listSubjects,listBranches,getBranch,listStudents} from '../../graphql/queries'
+import {listYears,listBranches} from '../../graphql/queries'
 import aws_mobile  from '../../aws-exports'
-import {v4 as uuid} from 'uuid'
+
 function Addstudent({ setislogged }) {
-  let [student,setstudent]=useState({Name:'',RollNo:'',BranchID:'',YearID:''})
+let [student,setstudent]=useState({Name:'',RollNo:'',BranchID:'',YearID:''})
  let [image,setimage]=useState([]);
 let [year,setYear]=useState('')
 let [Years,setYears]=useState([])

@@ -1,18 +1,15 @@
 import React ,{useState,useEffect}from 'react'
-import {Box,Button,Paper,TextField,InputLabel,Select,MenuItem, unstable_useId} from '@mui/material'
+import {Box,Button,Paper,TextField,InputLabel,Select,MenuItem} from '@mui/material'
 import {API,graphqlOperation} from 'aws-amplify'
-import {listYears,listSubjects,listBranches,getBranch,listStudents} from '../../graphql/queries'
+import {listYears,listBranches} from '../../graphql/queries'
 import { createSubject } from '../../graphql/mutations'
-import { v4 as uuid } from 'uuid'
 let AddSubjects =()=>{
-    let [year,setYear]=useState('')
+
     let [Years,setYears]=useState([])
-    let [branch, setBranch] = useState("");
-    let [Name, setName] = useState("");
     let [Branches, setBranches] = useState([]);
 
    
-let [Subject,setSubject]=useState({SubjectID:uuid()});
+let [Subject,setSubject]=useState({});
 
     async function fetchYear(){
  
@@ -48,7 +45,7 @@ let [Subject,setSubject]=useState({SubjectID:uuid()});
         console.log('success')
 
         try{
-            let x= await API.graphql(graphqlOperation(createSubject,{input:Subject}))}
+           await API.graphql(graphqlOperation(createSubject,{input:Subject}))}
         catch(err){
         console.log(err)
         }}
@@ -71,7 +68,7 @@ return (<Box sx={{height:"100vh",width:"100vw",display:'grid',placeItems:"center
     variant='outlined'
     label="Subject Name"
     onChange={(e)=>{
-setSubject({...Subject,SubjectName:e.target.value});
+setSubject({...Subject,Name:e.target.value});
     }}
     sx={{m:3}}/>
            <InputLabel id="demo-simple-select-label">Branch</InputLabel>

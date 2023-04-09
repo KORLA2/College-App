@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
-import {API,Storage,graphqlOperation} from 'aws-amplify'
-import {Box,TextFeild,Select,InputLabel,MenuItem,Button, Paper,} from '@mui/material'
+import {API,graphqlOperation} from 'aws-amplify'
+import {Box,Select,InputLabel,MenuItem,Button, Paper,} from '@mui/material'
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import * as AWS from 'aws-sdk'
-import { subjectsByBranchIDAndYearID,studentsByBranchIDAndYearID,listYears,listBranches } from '../../graphql/queries'
+import { subjectsByYearIDAndBranchID,studentsByBranchIDAndYearID,listYears,listBranches } from '../../graphql/queries'
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   
   [`&.${tableCellClasses.head}`]: {
@@ -36,7 +36,6 @@ const Set_Attendance = () => {
   let [year,setYear]=useState('')
   let [Years,setYears]=useState([])
   let [branch, setBranch] = useState("");
-  let [Name, setName] = useState("");
   let [Branches, setBranches] = useState([]);
 let [subjects,setsubjects]=useState([])
 
@@ -69,9 +68,9 @@ let fetchsubjects=async ()=>{
   try{
 
   
-let x= await API.graphql(graphqlOperation(subjectsByBranchIDAndYearID,{BranchID:branch,YearID:{eq:year}}))
+let x= await API.graphql(graphqlOperation(subjectsByYearIDAndBranchID,{BranchID:{eq:branch},YearID:year}))
 
-setsubjects(x.data.subjectsByBranchIDAndYearID.items);
+setsubjects(x.data.subjectsByYearIDAndBranchID.items);
 
   }
   catch(er){console.log(er)}

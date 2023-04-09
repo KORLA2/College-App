@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {Paper, TextField,Box, Button} from '@mui/material'
-import {createBranch, createYear,getYears} from "../../graphql/mutations"
-import {API,Storage,graphqlOperation} from 'aws-amplify'
-import { listBranches, listYears } from '../../graphql/queries'
+import {createBranch} from "../../graphql/mutations"
+import {API,graphqlOperation} from 'aws-amplify'
+import { listBranches} from '../../graphql/queries'
 
 const Addyear =()=>{
-    
-    let [Branch,setBranch]=useState('')
+
 let [BranchID,setBranchID]=useState('');
 let fetch=async ()=>{
 
@@ -29,8 +28,8 @@ catch(er){console.log(er)}
 let add= async()=>{
     console.log('appli')
 try{
-    let x=await API.graphql(graphqlOperation(createBranch,{input:{BranchID:BranchID,Name:Branch}}));
-console.log("success")
+    let x=await API.graphql(graphqlOperation(createBranch,{input:{BranchID:BranchID}}));
+console.log("success" +x)
 
 }
 catch(err){
@@ -56,7 +55,7 @@ setBranchID(e.target.value)
         variant='outlined'
         label="Add Branch"
         onChange={(e)=>{
-setBranch(e.target.value)
+setBranchID(e.target.value)
         }}
         sx={{m:3}}/>
         <Button

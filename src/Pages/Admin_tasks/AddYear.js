@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {Paper, TextField,Box, Button} from '@mui/material'
-import {createYear,getYears} from "../../graphql/mutations"
-import {API,Storage,graphqlOperation} from 'aws-amplify'
-import { listBranches, listYears } from '../../graphql/queries'
+import {createYear} from "../../graphql/mutations"
+import {API,graphqlOperation} from 'aws-amplify'
+import { listBranches } from '../../graphql/queries'
 
 const Addyear =()=>{
     
@@ -29,8 +29,8 @@ catch(er){console.log(er)}
 let add= async()=>{
     console.log('appli')
 try{
-    let x=await API.graphql(graphqlOperation(createYear,{input:{YearNo:year}}));
-console.log("success")
+    let x=await API.graphql(graphqlOperation(createYear,{input:{YearID:year}}));
+console.log("success"+x )
 
 }
 catch(err){

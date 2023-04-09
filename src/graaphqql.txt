@@ -1,1 +1,13 @@
 
+#include<bits/stdc++.h>
+using namespace std;
+
+main(){
+string str;
+int ptr;
+cin>>ptr;
+cin.ignore();
+cin>>str;
+
+}
+convert this code in c#

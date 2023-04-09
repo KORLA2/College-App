@@ -1,6 +1,6 @@
 import React ,{useState}from 'react'
 import { Home, Student, Admin, Register } from "./Pages/exports";
-import { Addstudent, AllStudents,SetAttendance,AddYear,AddBranch,AddSubjects} from "./Pages/Admin_tasks/exports";
+import { Addstudent, AllStudents,SetAttendance,AddYear,AddBranch} from "./Pages/Admin_tasks/exports";
 import {ViewProfile,ViewAttendance} from './Pages/Student_tasks/exports'
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 const App = () => {

@@ -1,23 +1,21 @@
 {
   "api": {
-    "crudcollege": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "crudcollege6e29c860"
-        }
-      ],
+    "collegeapp": {
+      "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
-          "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authcrudcollege6e29c860"
+          "additionalAuthenticationProviders": [
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2024-04-07T22:15:27.341Z",
+                "apiKeyExpirationDays": 365,
+                "description": "myappsyncapi"
+              },
+              "authenticationType": "API_KEY"
             }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AWS_IAM"
           }
         }
       },
@@ -26,7 +24,7 @@
     }
   },
   "auth": {
-    "crudcollege6e29c860": {
+    "collegeappd768a625": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -52,7 +50,7 @@
     }
   },
   "storage": {
-    "studentphotos": {
+    "collegebucket": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

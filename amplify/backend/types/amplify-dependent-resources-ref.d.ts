@@ -1,12 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "crudcollege": {
+    "collegeapp": {
       "GraphQLAPIEndpointOutput": "string",
-      "GraphQLAPIIdOutput": "string"
+      "GraphQLAPIIdOutput": "string",
+      "GraphQLAPIKeyOutput": "string"
     }
   },
   "auth": {
-    "crudcollege6e29c860": {
+    "collegeappd768a625": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -17,7 +18,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "studentphotos": {
+    "collegebucket": {
       "BucketName": "string",
       "Region": "string"
     }
