@@ -1,6 +1,6 @@
 import React ,{useState}from 'react'
 import { Home, Student, Admin, Register } from "./Pages/exports";
-import { Addstudent, AllStudents,SetAttendance,AddYear,AddBranch} from "./Pages/Admin_tasks/exports";
+import { Addstudent, DeleteStudents,SetAttendance,AddYear,AddBranch, AddSubjects,Update, UpdateStudents} from "./Pages/Admin_tasks/exports";
 import {ViewProfile,ViewAttendance} from './Pages/Student_tasks/exports'
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 const App = () => {
@@ -40,15 +40,29 @@ const App = () => {
                           />
 
                           <Route
-                            path="/admin/All Students"
-                            element={<AllStudents />}
+                            path="/admin/Delete Students"
+                            element={<DeleteStudents />}
                           />
                           <Route
                             path="/student/View Profile"
                             element={
-                              <ViewProfile student={student} image={image} />
+                              <ViewProfile image={image} />
+                            }
+                          />  
+                          <Route
+                            exact path="/admin/Update Students"
+                            element={
+                           <UpdateStudents/>
                             }
                           />
+                           <Route
+                          path='/admin/Update Student'
+                          element={
+                         <Update/>
+                          }
+                        />
+                            
+                         
                               <Route
                             path="/admin/Add Year"
                             element={
@@ -58,6 +72,12 @@ const App = () => {
                           path="/admin/Add Branch"
                           element={
                             <AddBranch/>
+                          }
+                        />
+                           <Route
+                          path="/admin/Add Subjects"
+                          element={
+                            <AddSubjects />
                           }
                         />
                         <Route

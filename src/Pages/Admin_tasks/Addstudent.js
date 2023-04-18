@@ -4,6 +4,7 @@ import {API,Storage,graphqlOperation} from 'aws-amplify'
 import {createStudent} from '../../graphql/mutations'
 import {listYears,listBranches} from '../../graphql/queries'
 import aws_mobile  from '../../aws-exports'
+import Alert from '@mui/material/Alert';
 
 function Addstudent({ setislogged }) {
 let [student,setstudent]=useState({Name:'',RollNo:'',BranchID:'',YearID:''})
@@ -12,12 +13,14 @@ let [year,setYear]=useState('')
 let [Years,setYears]=useState([])
 let [branch, setBranch] = useState("");
 let [Branches, setBranches] = useState([]);
+let [Alerts,setAlerts]=useState(0);
 
 async function DynamoDB(file){
 try{
 
   await API.graphql(graphqlOperation(createStudent,{input:student}));
 
+  setAlerts(1)
 
 }
 catch(err){console.log(err)}
@@ -30,7 +33,10 @@ async function fetchYear(){
     let x= await API.graphql(graphqlOperation(listYears));
 
 setYears(x.data.listYears.items)
-  }
+
+console.log(x)
+
+}
   catch(er){
 
 console.log(er)
@@ -83,6 +89,7 @@ contentType:'image/png'
   
   }
   student.Image=file.file
+  
 DynamoDB();
 console.log('successfully ')
 }).catch(e=>console.log(e))
@@ -94,12 +101,17 @@ console.log('successfully ')
     <Box sx={{height:"100vh",width:"100vw",display:'grid',placeItems:"center",}}>
 
 <Paper elevation ={3} sx={{p:4,display:'flex',flexDirection:'column'}} >
+      
+       {Alerts ?(  
+        <Alert severity="success">Successfully Added Student</Alert>
+       ):""}
       <input
         type="file"
         onChange={(e) => {
        
   
           setimage(e.target.files[0]);
+          
         }}
         sx={{m:4}}
 
@@ -141,7 +153,7 @@ console.log('successfully ')
 
 
           }}
-        >  {Years?.map(e=><MenuItem value={e.YearNo}>{e.YearNo}</MenuItem>)
+        >  {Years?.map(e=><MenuItem value={e.Name}>{e.Name}</MenuItem>)
       }
         
         </Select>

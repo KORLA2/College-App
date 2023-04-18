@@ -3,10 +3,12 @@ import {Paper, TextField,Box, Button} from '@mui/material'
 import {createBranch} from "../../graphql/mutations"
 import {API,graphqlOperation} from 'aws-amplify'
 import { listBranches} from '../../graphql/queries'
-
+import Alert from '@mui/material/Alert';
 const Addyear =()=>{
 
+
 let [BranchID,setBranchID]=useState('');
+let [Alerts,setAlerts]=useState(0);
 let fetch=async ()=>{
 
 try{
@@ -28,8 +30,10 @@ catch(er){console.log(er)}
 let add= async()=>{
     console.log('appli')
 try{
-    let x=await API.graphql(graphqlOperation(createBranch,{input:{BranchID:BranchID}}));
+    let x= await API.graphql(graphqlOperation(createBranch,{input:{Name:BranchID}}));
 console.log("success" +x)
+
+setAlerts(1);
 
 }
 catch(err){
@@ -44,20 +48,16 @@ catch(err){
     <Box sx={{height:"100vh",width:"100vw",display:'grid',placeItems:"center",}}>
 
     <Paper elevation={3} sx={{p:4,display:'flex',flexDirection:'column'}} > 
+       
+{Alerts?(<Alert severity="success">Successfully Added Branch</Alert>):""}
         <TextField
         variant='outlined'
-        label="Add Branch ID"
+        label="Add Branch Name"
         onChange={(e)=>{
 setBranchID(e.target.value)
         }}
         sx={{m:3}}/>
-              <TextField
-        variant='outlined'
-        label="Add Branch"
-        onChange={(e)=>{
-setBranchID(e.target.value)
-        }}
-        sx={{m:3}}/>
+            
         <Button
         variant='contained'
         onClick={add}

@@ -4,50 +4,58 @@ import{Paper} from '@mui/material'
 
 
 
-let ViewAttendance=({RollNo})=>{
-console.log(RollNo)
-let [student,setstudent]=useState([]);
+let ViewAttendance=()=>{
 
-  const docClient = new AWS.DynamoDB.DocumentClient();
+let [student,setstudent]=useState([]);
+let [RollNo,setRollNo]=useState('');
+
+
+
+useEffect(()=>{
+
+setRollNo(JSON.parse(localStorage.getItem("student")).data.getStudent.RollNo)
+
+},[])
+
+var docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
+
 
   useEffect(()=>{
-
-
+    if(RollNo){
     var params = {
-        TableName: "Attendance",
-        Key: {
-            RollNo:{N: RollNo},
-          },
+      TableName: 'Attendance',
+      Key:  RollNo
+     };
+     
+     docClient.scan(params, function(err, data) {
+       if (err) {
+         console.log("Error", err);
+       } else {
+         setstudent(data.Items.find(e=>e.RollNo===RollNo))
+       }
+     });
+     
     }
-    
-    docClient.scan(params,  (err, data) =>{
-        if (!err) {
-     setstudent(data.Items)
-        }
-    })
-    
+  },[RollNo])
 
-  },[])
+  console.log(RollNo,student)
     return <Paper
     elevation={3}
     sx={{ m: 5, p: 3, display: "grid", placeItems: "center" }}
   >
 
-  {
-    student?.map(e=>{
-if(e.RollNo===RollNo){
-    return (
+{
+Object.entries(student)?.map(e=>
+  
+  <h1>{e[0]}:{e[1]}</h1>
+  )
 
-        <h1>e.Branch</h1>
-    )
 }
-
-    }
-
-        
-    )
-  }
-
-  </Paper>
+ </Paper>
 }
 export default ViewAttendance
+
+
+
+
+

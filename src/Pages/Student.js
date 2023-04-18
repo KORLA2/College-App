@@ -1,4 +1,4 @@
-import  React ,{useState}from "react";
+import  React , {useState,useEffect}from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -29,7 +29,19 @@ const [state, setState] = useState({
 let [login, setlogin] = useState(1);
 
 let [RollNo, setRollNo] = useState("");
+useEffect(()=>{
+  let x=JSON.parse(localStorage.getItem("student"))
+  if(x)
+  {
+    setlogin(0);setstudent(x)
+  
+setimage(localStorage.getItem("imageurl"));
 
+  }
+
+},[])
+
+console.log(student)
 const toggleDrawer = (anchor, open) => (event) => {
   if (
     event.type === "keydown" &&
@@ -48,14 +60,16 @@ let student=await API.graphql(graphqlOperation(getStudent,{RollNo:RollNo}))
 
 
 setlogin(0);
-
+localStorage.setItem("student",JSON.stringify(student));
 setstudent(student)
 setRollNo1(RollNo)
 console.log(student)
 
 const imageurl=await Storage.get(student.data.getStudent.Image.key.substring(7),{expires:60})
-console.log(student.data.getStudent.Image.key.substring(7));
+
+
 setimage(imageurl)
+localStorage.setItem("imageurl",imageurl);
 }
 catch(e){
   console.log(e)
@@ -128,7 +142,7 @@ const list = (anchor) => (
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {login
               ? "Welcome to Student page"
-              : `Welcome ${student.data.getStudent.Name} `}
+              : `Welcome ${student?.data?.getStudent?.Name} `}
           </Typography>
           {!login && (
             <Button
@@ -136,6 +150,7 @@ const list = (anchor) => (
               variant="contained"
               onClick={() => {
                 setlogin(1);
+                localStorage.removeItem("student");
               }}
             >
               Logout
@@ -150,7 +165,8 @@ const list = (anchor) => (
           sx={{ m: 3, p: 3, display: "grid", placeItems: "center" }}
         >
           <Avatar>
-            <LockIcon />
+            <LockIcon/>
+
           </Avatar>
           <TextField
             variant="outlined"

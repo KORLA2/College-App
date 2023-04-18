@@ -33,7 +33,11 @@ export const getStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -71,89 +75,11 @@ export const listStudents = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        Image
-        createdAt
-        updatedAt
-        branchStudentsName
-        yearStudentsName
-      }
-      nextToken
-    }
-  }
-`;
-export const studentsByBranchIDAndYearID = /* GraphQL */ `
-  query StudentsByBranchIDAndYearID(
-    $BranchID: ID!
-    $YearID: ModelIDKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelStudentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    studentsByBranchIDAndYearID(
-      BranchID: $BranchID
-      YearID: $YearID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        RollNo
-        Name
-        BranchID
-        Branch {
-          Name
-          createdAt
-          updatedAt
+        Image {
+          bucket
+          region
+          key
         }
-        YearID
-        Year {
-          Name
-          createdAt
-          updatedAt
-        }
-        Image
-        createdAt
-        updatedAt
-        branchStudentsName
-        yearStudentsName
-      }
-      nextToken
-    }
-  }
-`;
-export const studentsByYearID = /* GraphQL */ `
-  query StudentsByYearID(
-    $YearID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelStudentFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    studentsByYearID(
-      YearID: $YearID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        RollNo
-        Name
-        BranchID
-        Branch {
-          Name
-          createdAt
-          updatedAt
-        }
-        YearID
-        Year {
-          Name
-          createdAt
-          updatedAt
-        }
-        Image
         createdAt
         updatedAt
         branchStudentsName
@@ -173,7 +99,6 @@ export const getBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -250,7 +175,6 @@ export const getYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -361,67 +285,34 @@ export const listSubjects = /* GraphQL */ `
     }
   }
 `;
-export const subjectsByBranchID = /* GraphQL */ `
-  query SubjectsByBranchID(
-    $BranchID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelSubjectFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    subjectsByBranchID(
-      BranchID: $BranchID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        Name
-        BranchID
-        Branch {
-          Name
-          createdAt
-          updatedAt
-        }
-        YearID
-        createdAt
-        updatedAt
-        branchSubjectsName
-      }
-      nextToken
+export const getLogin = /* GraphQL */ `
+  query GetLogin($Login: ID!) {
+    getLogin(Login: $Login) {
+      Login
+      createdAt
+      updatedAt
     }
   }
 `;
-export const subjectsByYearIDAndBranchID = /* GraphQL */ `
-  query SubjectsByYearIDAndBranchID(
-    $YearID: ID!
-    $BranchID: ModelIDKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelSubjectFilterInput
+export const listLogins = /* GraphQL */ `
+  query ListLogins(
+    $Login: ID
+    $filter: ModelLoginFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    subjectsByYearIDAndBranchID(
-      YearID: $YearID
-      BranchID: $BranchID
-      sortDirection: $sortDirection
+    listLogins(
+      Login: $Login
       filter: $filter
       limit: $limit
       nextToken: $nextToken
+      sortDirection: $sortDirection
     ) {
       items {
-        Name
-        BranchID
-        Branch {
-          Name
-          createdAt
-          updatedAt
-        }
-        YearID
+        Login
         createdAt
         updatedAt
-        branchSubjectsName
       }
       nextToken
     }
@@ -486,6 +377,163 @@ export const listYearbranches = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const studentsByBranchIDAndYearID = /* GraphQL */ `
+  query StudentsByBranchIDAndYearID(
+    $BranchID: ID!
+    $YearID: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelStudentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    studentsByBranchIDAndYearID(
+      BranchID: $BranchID
+      YearID: $YearID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        RollNo
+        Name
+        BranchID
+        Branch {
+          Name
+          createdAt
+          updatedAt
+        }
+        YearID
+        Year {
+          Name
+          createdAt
+          updatedAt
+        }
+        Image {
+          bucket
+          region
+          key
+        }
+        createdAt
+        updatedAt
+        branchStudentsName
+        yearStudentsName
+      }
+      nextToken
+    }
+  }
+`;
+export const studentsByYearID = /* GraphQL */ `
+  query StudentsByYearID(
+    $YearID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelStudentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    studentsByYearID(
+      YearID: $YearID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        RollNo
+        Name
+        BranchID
+        Branch {
+          Name
+          createdAt
+          updatedAt
+        }
+        YearID
+        Year {
+          Name
+          createdAt
+          updatedAt
+        }
+        Image {
+          bucket
+          region
+          key
+        }
+        createdAt
+        updatedAt
+        branchStudentsName
+        yearStudentsName
+      }
+
+      nextToken
+    }
+  }
+`;
+export const subjectsByBranchID = /* GraphQL */ `
+  query SubjectsByBranchID(
+    $BranchID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelSubjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    subjectsByBranchID(
+      BranchID: $BranchID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        Name
+        BranchID
+        Branch {
+          Name
+          createdAt
+          updatedAt
+        }
+        YearID
+        createdAt
+        updatedAt
+        branchSubjectsName
+      }
+      nextToken
+    }
+  }
+`;
+export const subjectsByYearIDAndBranchID = /* GraphQL */ `
+  query SubjectsByYearIDAndBranchID(
+    $YearID: ID!
+    $BranchID: ModelIDKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelSubjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    subjectsByYearIDAndBranchID(
+      YearID: $YearID
+      BranchID: $BranchID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        Name
+        BranchID
+        Branch {
+          Name
+          createdAt
+          updatedAt
+        }
+        YearID
+        createdAt
+        updatedAt
+        branchSubjectsName
       }
       nextToken
     }

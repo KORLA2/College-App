@@ -33,7 +33,11 @@ export const onCreateStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -73,7 +77,11 @@ export const onUpdateStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -113,7 +121,11 @@ export const onDeleteStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -131,7 +143,6 @@ export const onCreateBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -175,7 +186,6 @@ export const onUpdateBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -219,7 +229,6 @@ export const onDeleteBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -263,7 +272,6 @@ export const onCreateYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -296,7 +304,6 @@ export const onUpdateYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -329,7 +336,6 @@ export const onDeleteYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -427,6 +433,33 @@ export const onDeleteSubject = /* GraphQL */ `
       createdAt
       updatedAt
       branchSubjectsName
+    }
+  }
+`;
+export const onCreateLogin = /* GraphQL */ `
+  subscription OnCreateLogin($filter: ModelSubscriptionLoginFilterInput) {
+    onCreateLogin(filter: $filter) {
+      Login
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLogin = /* GraphQL */ `
+  subscription OnUpdateLogin($filter: ModelSubscriptionLoginFilterInput) {
+    onUpdateLogin(filter: $filter) {
+      Login
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLogin = /* GraphQL */ `
+  subscription OnDeleteLogin($filter: ModelSubscriptionLoginFilterInput) {
+    onDeleteLogin(filter: $filter) {
+      Login
+      createdAt
+      updatedAt
     }
   }
 `;

@@ -3,10 +3,13 @@ import {Box,Button,Paper,TextField,InputLabel,Select,MenuItem} from '@mui/materi
 import {API,graphqlOperation} from 'aws-amplify'
 import {listYears,listBranches} from '../../graphql/queries'
 import { createSubject } from '../../graphql/mutations'
+import Alert from '@mui/material/Alert';
+
 let AddSubjects =()=>{
 
     let [Years,setYears]=useState([])
     let [Branches, setBranches] = useState([]);
+    let [Alerts, setAlerts] = useState(0);
 
    
 let [Subject,setSubject]=useState({});
@@ -45,7 +48,9 @@ let [Subject,setSubject]=useState({});
         console.log('success')
 
         try{
-           await API.graphql(graphqlOperation(createSubject,{input:Subject}))}
+           await API.graphql(graphqlOperation(createSubject,{input:Subject}))
+setAlerts(1);
+          }
         catch(err){
         console.log(err)
         }}
@@ -59,11 +64,15 @@ let [Subject,setSubject]=useState({});
       
       
       },[])
-console.log(Years)
+console.log(Subject)
 
 return (<Box sx={{height:"100vh",width:"100vw",display:'grid',placeItems:"center",}}>
 
 <Paper elevation={3} sx={{p:4,display:'flex',flexDirection:'column'}} > 
+    
+{Alerts ?(  
+        <Alert severity="success">Successfully Added Subject</Alert>
+       ):""}
     <TextField
     variant='outlined'
     label="Subject Name"
@@ -93,7 +102,7 @@ setSubject({...Subject,BranchID:e.target.value});
           labelId="demo-simple-select-label"
           id="demo-simple-select"
 
-          value={Subject.YearNo}
+          value={Subject.YearID}
           label="Year"
           onChange={(e)=>{
 setSubject({...Subject,YearID:e.target.value});
@@ -103,7 +112,7 @@ setSubject({...Subject,YearID:e.target.value});
         sx={{m:3}}
 
         >
-       {Years?.map(e=><MenuItem value={e.YearNo}>{e.YearNo}</MenuItem>)
+       {Years?.map(e=><MenuItem value={e.Name}>{e.Name}</MenuItem>)
        }
         </Select>
 

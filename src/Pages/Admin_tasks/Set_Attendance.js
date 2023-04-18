@@ -28,7 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
   // hide last border
   '&:last-child td, &:last-child th': {
-    border: 0,
+    border: 0
   },
 }));
 const Set_Attendance = () => {
@@ -83,7 +83,7 @@ let x= await API.graphql(graphqlOperation(studentsByBranchIDAndYearID,{BranchID:
 setstudents(x.data.studentsByBranchIDAndYearID.items)
 console.log(x.data.studentsByBranchIDAndYearID)
 let data=x.data.studentsByBranchIDAndYearID.items.map((e,idx)=>{
-return {Name:e.Name,RollNo:e.RollNo,Year:e.YearID,Branch:e.BranchID}
+return {Name:e.Name,RollNo:e.RollNo,YearID:e.YearID,BranchID:e.BranchID}
 
 })
 setAttendance(data)
@@ -92,7 +92,7 @@ setAttendance(data)
 }
 console.log(Attendance)
 async function fetchYear(){
- 
+
   try{
     let x= await API.graphql(graphqlOperation(listYears));
 
@@ -163,10 +163,11 @@ value={year}
           onChange={(e)=>{
       
 setYear(e.target.value)
+
           }}
         sx={{m:3}}
         >
-       {Years?.map(e=><MenuItem value={e.YearNo}>{e.YearNo}</MenuItem>)
+       {Years?.map(e=><MenuItem value={e.Name}>{e.Name}</MenuItem>)
        }
         </Select>
 </div>
@@ -188,7 +189,7 @@ setYear(e.target.value)
             <StyledTableCell align="right">Year</StyledTableCell>
          { 
           subjects?.map(e=>
-            <StyledTableCell align="right">{e.SubjectName}</StyledTableCell>
+            <StyledTableCell align="right">{e.Name}</StyledTableCell>
             
             
             )
@@ -210,7 +211,7 @@ setYear(e.target.value)
               <StyledTableCell align="right">
                 <TextField variant="outlined"   onChange={(p)=>{
                   let x=Attendance[idx]
-                  x={...x,[e.SubjectName]:p.target.value};
+                  x={...x,[e.Name]:p.target.value};
                   
                   Attendance.splice(idx,1)
 

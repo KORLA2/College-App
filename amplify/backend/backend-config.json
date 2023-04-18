@@ -4,18 +4,14 @@
       "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "apiKeyConfig": {
-                "apiKeyExpirationDate": "2024-04-07T22:15:27.341Z",
-                "apiKeyExpirationDays": 365,
-                "description": "myappsyncapi"
-              },
-              "authenticationType": "API_KEY"
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "AWS_IAM"
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-04-08T13:54:35.142Z",
+              "apiKeyExpirationDays": 365,
+              "description": "collegeapi"
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },

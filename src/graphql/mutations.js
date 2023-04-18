@@ -36,7 +36,11 @@ export const createStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -79,7 +83,11 @@ export const updateStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -122,7 +130,11 @@ export const deleteStudent = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      Image
+      Image {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
       branchStudentsName
@@ -143,7 +155,6 @@ export const createBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -190,7 +201,6 @@ export const updateBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -237,7 +247,6 @@ export const deleteBranch = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -284,7 +293,6 @@ export const createYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -320,7 +328,6 @@ export const updateYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -356,7 +363,6 @@ export const deleteYear = /* GraphQL */ `
           Name
           BranchID
           YearID
-          Image
           createdAt
           updatedAt
           branchStudentsName
@@ -463,6 +469,42 @@ export const deleteSubject = /* GraphQL */ `
       createdAt
       updatedAt
       branchSubjectsName
+    }
+  }
+`;
+export const createLogin = /* GraphQL */ `
+  mutation CreateLogin(
+    $input: CreateLoginInput!
+    $condition: ModelLoginConditionInput
+  ) {
+    createLogin(input: $input, condition: $condition) {
+      Login
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateLogin = /* GraphQL */ `
+  mutation UpdateLogin(
+    $input: UpdateLoginInput!
+    $condition: ModelLoginConditionInput
+  ) {
+    updateLogin(input: $input, condition: $condition) {
+      Login
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteLogin = /* GraphQL */ `
+  mutation DeleteLogin(
+    $input: DeleteLoginInput!
+    $condition: ModelLoginConditionInput
+  ) {
+    deleteLogin(input: $input, condition: $condition) {
+      Login
+      createdAt
+      updatedAt
     }
   }
 `;
