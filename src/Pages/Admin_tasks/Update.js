@@ -10,14 +10,20 @@ import aws_mobile  from '../../aws-exports'
 
 export default function  Update(){
 let location=useLocation();
-let [student,setstudent]=useState([]);
 let [updatedstudent,setupdatedstudent]=useState({});
 let [image,setimage]=useState('');
 let [image1,setimage1]=useState('');
 
-let update=()=>{
+let update=async ()=>{
+try{
+  console.log('Trying to update',updatedstudent)
 
-API.graphql(graphqlOperation(updateStudent,{input:updatedstudent}))
+  await API.graphql(graphqlOperation(updateStudent,{input:updatedstudent}))
+  console.log('successfully uppdatded')
+}
+catch(err){
+console.log('Error in updating',err)
+}
 
 }
 
@@ -26,10 +32,9 @@ async function fetchStudent(){
 try{
 
   let data=await API.graphql(graphqlOperation(getStudent,{RollNo:location.search.substring(8)}))
-    
-  setstudent(data)
-  let {YearID,BranchID,Name,RollNo}={...data.data.getStudent};
-  setupdatedstudent({BranchID:BranchID,YearID:YearID,Name:Name,RollNo:RollNo})
+
+
+  setupdatedstudent({BranchID:data.data.getStudent.BranchID,YearID:data.data.getStudent.YearID,Name:data.data.getStudent.Name,RollNo:data.data.getStudent.RollNo,Image:data.data.getStudent.Image})
   const imageurl=await Storage.get(data?.data?.getStudent.Image.key.substring(7),{expires:60})
             
   setimage(imageurl)
@@ -135,7 +140,7 @@ setimage1(e.target.files[0]);
           id="outlined-required"
           label='Name'
           value={updatedstudent.Name}
-          onChange={(e) => setupdatedstudent({ ...student, Name:(e.target.value) })}
+          onChange={(e) => setupdatedstudent({ ...updatedstudent, Name:(e.target.value) })}
 
           defaultValue={updatedstudent.Name}
 
@@ -162,7 +167,7 @@ setimage1(e.target.files[0]);
           label='Year'
          
           value={updatedstudent.YearID}
-          onChange={(e) => setupdatedstudent({ ...student, YearID:(e.target.value) })}
+          onChange={(e) => setupdatedstudent({ ...updatedstudent, YearID:(e.target.value) })}
           defaultValue={updatedstudent.YearID}
 
         />

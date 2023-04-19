@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import LockIcon from "@mui/icons-material/Lock";
 import Paper from "@mui/material/Paper";
-import {Avatar }from '@mui/material'
+import {Avatar,Alert }from '@mui/material'
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -21,12 +21,14 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { TextField } from "@mui/material";
 import {getStudent} from '../graphql/queries'
+import './sback.css'
 import { graphqlOperation ,API,Storage} from "aws-amplify";
 const Student = ({student,setstudent,setimage,setRollNo1}) => {
 const [state, setState] = useState({
   left: false,
 });
 let [login, setlogin] = useState(1);
+let [Alerts, setAlerts] = useState(0);
 
 let [RollNo, setRollNo] = useState("");
 useEffect(()=>{
@@ -57,8 +59,8 @@ let checkLogin=async ()=>{
 try{
 
 let student=await API.graphql(graphqlOperation(getStudent,{RollNo:RollNo}))
-
-
+if(!student.data.getStudent)
+throw "Not found"
 setlogin(0);
 localStorage.setItem("student",JSON.stringify(student));
 setstudent(student)
@@ -72,6 +74,7 @@ setimage(imageurl)
 localStorage.setItem("imageurl",imageurl);
 }
 catch(e){
+  setAlerts(1);
   console.log(e)
 }
 
@@ -85,6 +88,7 @@ const list = (anchor) => (
     role="presentation"
     onClick={toggleDrawer(anchor, false)}
     onKeyDown={toggleDrawer(anchor, false)}
+   
   >
     <List>
       {["View Profile", "View Attendance", "View Marks", "All Students"].map(
@@ -118,7 +122,7 @@ const list = (anchor) => (
   </Box>
 );
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1,width:'100vw', height:"100vh" }} id='sback'  >
       <AppBar position="static">
         <Toolbar>
           {!login && (
@@ -135,15 +139,16 @@ const list = (anchor) => (
                 open={state["left"]}
                 onClose={toggleDrawer("left", false)}
               >
-                {list("left")}
-              </Drawer>
-            </IconButton>
+              {list("left")}
+            </Drawer>
+          </IconButton>
           )}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {login
               ? "Welcome to Student page"
               : `Welcome ${student?.data?.getStudent?.Name} `}
           </Typography>
+
           {!login && (
             <Button
               color="secondary"
@@ -162,12 +167,19 @@ const list = (anchor) => (
       { login ? (
         <Paper
           elevation={3}
+      
           sx={{ m: 3, p: 3, display: "grid", placeItems: "center" }}
         >
           <Avatar>
             <LockIcon/>
 
           </Avatar>
+
+         { Alerts ?<Alert sx={{m:3}} severity="error">
+
+        Invalid <strong>RollNo</strong>
+         </Alert>:""
+}
           <TextField
             variant="outlined"
             label="RollNo"

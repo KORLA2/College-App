@@ -49,9 +49,11 @@ let upload= async ()=>{
   Attendance.forEach(e=>{
     let params={
       TableName:"Attendance",
-      Item:e
-      
+      Item:e,
+ 
       }
+
+      
        docClient.put(params,(e,d)=>{
         if(e)console.log(e)
         else console.log(d)

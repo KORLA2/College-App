@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import {Container,Box} from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import './background.css'
 
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
@@ -114,7 +115,7 @@ setislogged(0)
 
 console.log(islogged)
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1,height:'100vh',width:'100vw'  }} id='background' >
       <AppBar position="static">
         <Toolbar>
           <IconButton

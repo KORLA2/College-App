@@ -25,6 +25,7 @@
     "google-map-react": "^2.1.10",
     "leaflet": "^1.8.0",
     "react": "^18.1.0",
+    "dotenv": "^16.0.3",
     "react-dom": "^18.1.0",
     "react-draggable": "^4.4.5",
     "react-google-login": "^5.2.2",
